@@ -6,8 +6,12 @@ const PORT = 8081
 const app = express()
 
 app.get('/', async (req: Request, res: Response) => {
-  const response = await axios.get('http://localhost:8080')
-  res.send(response.data)
+  try {
+    const response = await axios.get('http://localhost:8080')
+    res.send(response.data)
+  } catch (error) {
+    res.sendStatus(501)
+  }
 })
 
 app.listen(PORT, () => {
