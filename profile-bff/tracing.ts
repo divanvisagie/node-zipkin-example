@@ -21,7 +21,7 @@ const sdk = new opentelemetry.NodeSDK({
   // Optional - you can use the metapackage or load each instrumentation individually
   instrumentations: [getNodeAutoInstrumentations() as any],
   resource: new Resource({
-    [ResourceAttributesSC.SERVICE_NAME]: 'profile',
+    [ResourceAttributesSC.SERVICE_NAME]: 'profile-bff',
   }),
   // See the Configuration section below for additional  configuration options
 })
