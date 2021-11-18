@@ -14,7 +14,7 @@ async function main() {
 
   app.get('/', async (req: Request, res: Response) => {
     try {
-      const result = await client.query('SELECT * from usersa')
+      const result = await client.query('SELECT * from users')
       console.log(result.rows) // Hello world!
       res.send(result.rows)
     } catch (error) {

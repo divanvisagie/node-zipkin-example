@@ -12,16 +12,17 @@ async function getUrlFor(serviceName: string): Promise<string> {
   const firstItem = ps[0] || {}
 
   const url = `http://${firstItem.ServiceAddress}:${firstItem.ServicePort}`
-  console.log(url)
+  console.log(`Using url: `, url)
   return url
 }
 
 app.get('/', async (req: Request, res: Response) => {
   try {
-    const url = getUrlFor('profile')
-    const response = await axios.get(`${url}`)
+    const url = await getUrlFor('profile')
+    const response = await axios.get(`${url}/`)
     res.send(response.data)
   } catch (error) {
+    console.error('/', error)
     res.sendStatus(501)
   }
 })
