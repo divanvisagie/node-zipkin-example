@@ -2,14 +2,12 @@ import express, { Request, Response } from 'express'
 import { bootstrap } from './src/bootstrap'
 import { createPgClient } from './src/clients/postgresClient'
 
-const config = require('./config/dev.json')
-
 const PORT = 8080
-const app = express()
 
 const { consul } = bootstrap(PORT)
 
 async function main() {
+  const app = express()
   const client = await createPgClient()
 
   app.get('/', async (req: Request, res: Response) => {
