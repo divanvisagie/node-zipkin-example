@@ -1,0 +1,5 @@
+{
+    "mail-sender" : {
+        "url": "localhost:8084"
+    }
+}
