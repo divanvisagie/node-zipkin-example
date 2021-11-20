@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "ts-node --require './src/bootstrap/tracing.ts' src/index.ts"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.0.3",
