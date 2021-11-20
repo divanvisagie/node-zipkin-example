@@ -17,21 +17,36 @@ services:
     image: openzipkin/zipkin
     # container_name: zipkin
     ports:
-      - 9411:9411
+      - '9411:9411'
 
   # Unleash
   unleash:
     image: unleashorg/unleash-server:latest
     ports:
-      - "4242:4242"
+      - '4242:4242'
     environment:
-      DATABASE_URL: postgres://postgres:unleash@unleash-db/postgres
+      DATABASE_HOST: 'unleash-db'
+      DATABASE_NAME: 'unleash'
+      DATABASE_USERNAME: 'unleash_user'
+      DATABASE_PASSWORD: 'some_password'
+      DATABASE_SSL: 'false'
+    networks:
+      - unleash
     depends_on:
       - unleash-db
   unleash-db:
     environment:
-      POSTGRES_DB: "db"
-      POSTGRES_HOST_AUTH_METHOD: "trust"
+      POSTGRES_DB: 'unleash'
+      POSTGRES_PASSWORD: 'some_password'
+      POSTGRES_USER: 'unleash_user'
+      POSTGRES_HOST_AUTH_METHOD: 'trust'
     expose:
-      - "5432"
+      - '5433:5432'
+    networks:
+      - unleash
     image: postgres:10-alpine
+
+networks:
+  unleash:
+    name: unleash
+  
