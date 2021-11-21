@@ -10,7 +10,7 @@ async function main() {
   const app = express()
   const client = await createPgClient()
 
-  app.get('/', async (req: Request, res: Response) => {
+  app.get('/', async (_req: Request, res: Response) => {
     try {
       const result = await client.query('SELECT * from users')
       console.log(result.rows) // Hello world!
@@ -20,7 +20,7 @@ async function main() {
     }
   })
 
-  app.get('/sign-up', async (req: Request, res: Response) => {
+  app.get('/sign-up', async (_req: Request, res: Response) => {
     try {
       // TODO: write to db
       // TODO: Send mail
@@ -31,7 +31,7 @@ async function main() {
     }
   })
 
-  app.get('/health', async (req: Request, res: Response) => {
+  app.get('/health', async (_req: Request, res: Response) => {
     try {
       console.log('Healthcheck')
       res.send('OK')

@@ -8,7 +8,7 @@ const zipkinExporter = new ZipkinExporter()
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: zipkinExporter,
- instrumentations: [getNodeAutoInstrumentations() as any],
+  instrumentations: [getNodeAutoInstrumentations() as any],
   resource: new Resource({
     [ResourceAttributesSC.SERVICE_NAME]: 'profile-bff',
   }),

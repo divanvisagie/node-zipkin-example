@@ -16,7 +16,7 @@ async function getUrlFor(serviceName: string): Promise<string> {
   return url
 }
 
-app.get('/', async (req: Request, res: Response) => {
+app.get('/', async (_req: Request, res: Response) => {
   try {
     const url = await getUrlFor('profile')
     const response = await axios.get(`${url}/`)
@@ -27,7 +27,7 @@ app.get('/', async (req: Request, res: Response) => {
   }
 })
 
-app.get('/sign-up', async (req: Request, res: Response) => {
+app.get('/sign-up', async (_req: Request, res: Response) => {
   try {
     const url = await getUrlFor('profile')
     const response = await axios.get(`${url}/sign-up`)
@@ -38,7 +38,7 @@ app.get('/sign-up', async (req: Request, res: Response) => {
   }
 })
 
-app.get('/health', async (req: Request, res: Response) => {
+app.get('/health', async (_req: Request, res: Response) => {
   try {
     console.log('Healthcheck')
     res.send('OK')

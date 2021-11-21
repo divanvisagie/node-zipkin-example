@@ -9,5 +9,4 @@ export const createPgClient = async () => {
   await client.connect()
 
   return client
-  //   await client.end()
 }
